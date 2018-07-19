@@ -22,9 +22,9 @@ namespace Outliner.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult Register()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "The page where users will sign up for Outliner.";
 
             return View();
         }
