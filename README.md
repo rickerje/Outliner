@@ -17,7 +17,7 @@ For writers of fiction, the outline is a sometimes contentious step in the proce
   * Save to Google docs
   * Save as PDF
 * Help: At each stage, give users “?” icons they can click to find out more about this part of the outline, what it is, how it works, and why it’s important.
-* (Bonus) Paid/Pro: What if there’s a paid option? Payment integration?
+* (Future) Paid/Pro: Additional features and payment integration
 
 ### Technologies
 * Programming language: C#
