@@ -8,8 +8,7 @@
 @if (User != null)
 {
     <p>
-        Welcome, @ViewBag.message!
+        @ViewBag.message!
     </p>
 }
-    <p> Please <a asp-area="" asp-controller="User" asp-action="Add"> Sign up</a>.</p>
-
+<p> Please <a asp-area="" asp-controller="User" asp-action="Add"> Sign up</a>.</p>

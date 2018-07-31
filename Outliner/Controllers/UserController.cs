@@ -12,12 +12,14 @@ namespace Outliner.Controllers
     public class UserController : Controller
     {
 
+        //for testing purposes
         // GET: User
         public ActionResult Index(string message)
         {
             ViewBag.message = message;
             return View();
         }
+        
 
         //Add
         [HttpGet]
@@ -37,6 +39,7 @@ namespace Outliner.Controllers
             model.Add();
             string messageString = $"Welcome {model.Username}";
             //return Redirect($"Index?message={messageString}");
+            //Temporary RedirectToAction while testing Add User--update when views work correctly
             return RedirectToAction("Index", new { message = messageString });
         }
 
