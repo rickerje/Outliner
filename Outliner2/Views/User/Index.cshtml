@@ -1,0 +1,14 @@
+﻿@model Outliner.Models.User
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Index</h2>
+@if (User != null)
+{
+    <p>
+        @ViewBag.message!
+    </p>
+}
+<p> Please <a asp-area="" asp-controller="User" asp-action="Add"> Sign up</a>.</p>

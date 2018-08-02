@@ -1,6 +1,6 @@
 using System;
 
-namespace Outliner2.Models
+namespace Outliner.Models
 {
     public class ErrorViewModel
     {

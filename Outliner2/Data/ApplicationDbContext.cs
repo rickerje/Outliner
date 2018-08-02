@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Outliner2.Data
+namespace Outliner.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
