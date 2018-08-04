@@ -7,7 +7,7 @@ namespace Outliner.Models
 {
     public class Outline
     {
-        public string outlineName { get; set; }
+        public string OutlineName { get; set; }
         public int ID { get; set; }
     }
 }
