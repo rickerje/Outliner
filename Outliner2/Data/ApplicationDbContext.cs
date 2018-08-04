@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Outliner.Models;
 
 namespace Outliner.Data
 {
@@ -12,5 +13,6 @@ namespace Outliner.Data
             : base(options)
         {
         }
+        public DbSet<Outliner.Models.Outline> Outline { get; set; }
     }
 }

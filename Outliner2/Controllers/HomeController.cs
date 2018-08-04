@@ -17,14 +17,14 @@ namespace Outliner.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Writing a novel is hard. Writing your outline for it shouldn't be.";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Contact Us";
 
             return View();
         }
