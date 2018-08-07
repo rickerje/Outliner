@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace Outliner.Models
 {
@@ -9,5 +10,6 @@ namespace Outliner.Models
     {
         public string OutlineName { get; set; }
         public int ID { get; set; }
+        public string CurrentUserId { get; set; }
     }
 }

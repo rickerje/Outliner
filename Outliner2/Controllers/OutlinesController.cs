@@ -22,7 +22,7 @@ namespace Outliner.Controllers
         // GET: Outlines
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Outline.ToListAsync());
+            return View(await _context.Outlines.ToListAsync());
         }
 
         // GET: Outlines/Details/5
@@ -33,7 +33,7 @@ namespace Outliner.Controllers
                 return NotFound();
             }
 
-            var outline = await _context.Outline
+            var outline = await _context.Outlines
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (outline == null)
             {
@@ -54,7 +54,7 @@ namespace Outliner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OutlineName,ID")] Outline outline)
+        public async Task<IActionResult> Create([Bind("OutlineName,ID,CurrentUserID")] Outline outline)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +73,7 @@ namespace Outliner.Controllers
                 return NotFound();
             }
 
-            var outline = await _context.Outline.FindAsync(id);
+            var outline = await _context.Outlines.FindAsync(id);
             if (outline == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace Outliner.Controllers
                 return NotFound();
             }
 
-            var outline = await _context.Outline
+            var outline = await _context.Outlines
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (outline == null)
             {
@@ -139,15 +139,15 @@ namespace Outliner.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var outline = await _context.Outline.FindAsync(id);
-            _context.Outline.Remove(outline);
+            var outline = await _context.Outlines.FindAsync(id);
+            _context.Outlines.Remove(outline);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool OutlineExists(int id)
         {
-            return _context.Outline.Any(e => e.ID == id);
+            return _context.Outlines.Any(e => e.ID == id);
         }
     }
 }
