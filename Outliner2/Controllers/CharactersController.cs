@@ -10,22 +10,22 @@ using Outliner.Models;
 
 namespace Outliner.Controllers
 {
-    public class OutlinesController : Controller
+    public class CharactersController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public OutlinesController(ApplicationDbContext context)
+        public CharactersController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Outlines
+        // GET: Characters
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Outlines.ToListAsync());
+            return View(await _context.Character.ToListAsync());
         }
 
-        // GET: Outlines/Details/5
+        // GET: Characters/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,41 +33,39 @@ namespace Outliner.Controllers
                 return NotFound();
             }
 
-            var outline = await _context.Outlines
+            var character = await _context.Character
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (outline == null)
+            if (character == null)
             {
                 return NotFound();
             }
 
-            return View(outline);
+            return View(character);
         }
 
-        // GET: Outlines/Create
+        // GET: Characters/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Outlines/Create
+        // POST: Characters/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OutlineName,ID")] Outline outline)
+        public async Task<IActionResult> Create([Bind("ID,name,OutlineID")] Character character)
         {
             if (ModelState.IsValid)
             {
-                string currentUserName = User.Identity.Name;
-                outline.CurrentUserName = currentUserName;
-                _context.Add(outline);
+                _context.Add(character);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(outline);
+            return View(character);
         }
 
-        // GET: Outlines/Edit/5
+        // GET: Characters/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +73,22 @@ namespace Outliner.Controllers
                 return NotFound();
             }
 
-            var outline = await _context.Outlines.FindAsync(id);
-            if (outline == null)
+            var character = await _context.Character.FindAsync(id);
+            if (character == null)
             {
                 return NotFound();
             }
-            return View(outline);
+            return View(character);
         }
 
-        // POST: Outlines/Edit/5
+        // POST: Characters/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OutlineName,ID")] Outline outline)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,name,OutlineID")] Character character)
         {
-            if (id != outline.ID)
+            if (id != character.ID)
             {
                 return NotFound();
             }
@@ -99,12 +97,12 @@ namespace Outliner.Controllers
             {
                 try
                 {
-                    _context.Update(outline);
+                    _context.Update(character);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OutlineExists(outline.ID))
+                    if (!CharacterExists(character.ID))
                     {
                         return NotFound();
                     }
@@ -115,10 +113,10 @@ namespace Outliner.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(outline);
+            return View(character);
         }
 
-        // GET: Outlines/Delete/5
+        // GET: Characters/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +124,30 @@ namespace Outliner.Controllers
                 return NotFound();
             }
 
-            var outline = await _context.Outlines
+            var character = await _context.Character
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (outline == null)
+            if (character == null)
             {
                 return NotFound();
             }
 
-            return View(outline);
+            return View(character);
         }
 
-        // POST: Outlines/Delete/5
+        // POST: Characters/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var outline = await _context.Outlines.FindAsync(id);
-            _context.Outlines.Remove(outline);
+            var character = await _context.Character.FindAsync(id);
+            _context.Character.Remove(character);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool OutlineExists(int id)
+        private bool CharacterExists(int id)
         {
-            return _context.Outlines.Any(e => e.ID == id);
+            return _context.Character.Any(e => e.ID == id);
         }
     }
 }

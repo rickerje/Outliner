@@ -15,5 +15,7 @@ namespace Outliner.Data
             : base(options)
         {
         }
+
+        public DbSet<Outliner.Models.Character> Character { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model Outliner.Models.Outline
+﻿@model Outliner.Models.Character
 
 @{
     ViewData["Title"] = "Details";
@@ -8,20 +8,20 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Outline</h4>
+    <h4>Character</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.OutlineName)
+            @Html.DisplayNameFor(model => model.name)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.OutlineName)
+            @Html.DisplayFor(model => model.name)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.CurrentUserName)
+            @Html.DisplayNameFor(model => model.OutlineID)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.CurrentUserName)
+            @Html.DisplayFor(model => model.OutlineID)
         </dd>
     </dl>
 </div>

@@ -10,6 +10,8 @@ namespace Outliner.Models
     {
         public string OutlineName { get; set; }
         public int ID { get; set; }
-        public string CurrentUserId { get; set; }
+
+        //below is the userID from the AspNetUser table
+        public string CurrentUserName { get; set; }
     }
 }
