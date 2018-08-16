@@ -9,10 +9,13 @@ namespace Outliner.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
+        public DbSet<Outline> Outlines { get; set;}
+
+        public DbSet<Character> Characters { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
-        public DbSet<Outliner.Models.Outline> Outline { get; set; }
     }
 }
