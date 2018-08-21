@@ -22,7 +22,7 @@ namespace Outliner.Controllers
         // GET: Characters
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Character.ToListAsync());
+            return View(await _context.Characters.ToListAsync());
         }
 
         // GET: Characters/Details/5
@@ -33,7 +33,7 @@ namespace Outliner.Controllers
                 return NotFound();
             }
 
-            var character = await _context.Character
+            var character = await _context.Characters
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (character == null)
             {
@@ -73,7 +73,7 @@ namespace Outliner.Controllers
                 return NotFound();
             }
 
-            var character = await _context.Character.FindAsync(id);
+            var character = await _context.Characters.FindAsync(id);
             if (character == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace Outliner.Controllers
                 return NotFound();
             }
 
-            var character = await _context.Character
+            var character = await _context.Characters
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (character == null)
             {
@@ -139,15 +139,15 @@ namespace Outliner.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var character = await _context.Character.FindAsync(id);
-            _context.Character.Remove(character);
+            var character = await _context.Characters.FindAsync(id);
+            _context.Characters.Remove(character);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CharacterExists(int id)
         {
-            return _context.Character.Any(e => e.ID == id);
+            return _context.Characters.Any(e => e.ID == id);
         }
     }
 }
