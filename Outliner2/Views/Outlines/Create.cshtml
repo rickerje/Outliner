@@ -5,7 +5,7 @@
 
 @model Outliner.Models.Outline
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create an Outline";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -15,13 +15,13 @@
 <hr />
 @if (SignInManager.IsSignedIn(User))
 {
-    <p>Current user is @UserManager.GetUserId(User)</p>
+    <!--<p>Current user is @UserManager.GetUserId(User)</p>-->
     <div class="row">
         <div class="col-md-4">
             <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="OutlineName" class="control-label"></label>
+                    <label asp-for="OutlineName" class="control-label">Outline Name</label>
                     <input asp-for="OutlineName" class="form-control" />
                     <span asp-validation-for="OutlineName" class="text-danger"></span>
                 </div>

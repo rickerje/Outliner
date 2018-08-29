@@ -22,7 +22,11 @@ namespace Outliner.Controllers
         // GET: Outlines
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Outlines.ToListAsync());
+            IList<Outline> myOutlines = _context.Outlines
+                .Where(m=> m.CurrentUserName == User.Identity.Name)
+                .ToList();
+            return View(myOutlines);
+            //return View(await _context.Outlines.ToListAsync());
         }
 
         // GET: Outlines/Details/5
