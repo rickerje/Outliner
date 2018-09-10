@@ -36,6 +36,13 @@ namespace Outliner.Controllers
             return View();
         }
 
+        public IActionResult Help()
+        {
+            ViewData["Message"] = "If you're not sure where to go next with your outline, find answers here.";
+
+            return View();
+        }
+
         public IActionResult Contact()
         {
             ViewData["Message"] = "Contact Us";

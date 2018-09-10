@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Outline outline = ViewData["thisOutline"] as Outline;
 }
 
 <h2>Create</h2>
@@ -19,10 +20,17 @@
                 <span asp-validation-for="name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OutlineID" class="control-label"></label>
-                <input asp-for="OutlineID" class="form-control" />
-                <span asp-validation-for="OutlineID" class="text-danger"></span>
+                <label asp-for="IsProtagonist" class="control-label">Is this your protagonist?</label><br />
+                <input asp-for="IsProtagonist" type="radio" value="True" />Yes<br />
+                <input asp-for="IsProtagonist" type="radio" value="False" />No
             </div>
+            <input type="hidden" asp-for="OutlineID" value="@ViewBag.outlineID" />
+            <!--<div class="form-group">
+        <label asp-for="OutlineID" class="control-label"></label>
+        <input asp-for="OutlineID" class="form-control" />
+        <span asp-validation-for="OutlineID" class="text-danger"></span>
+    </div>
+        -->
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>

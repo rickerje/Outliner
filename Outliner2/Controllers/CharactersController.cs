@@ -25,6 +25,14 @@ namespace Outliner.Controllers
             return View(await _context.Characters.ToListAsync());
         }
 
+        public async Task<IActionResult> Index(int theID)
+        {
+            IList<Character> outlineCharacters = _context.Characters
+                .Where(m => m.OutlineID == theID)
+                .ToList();
+            return View(outlineCharacters);
+        }
+
         // GET: Characters/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -44,8 +52,16 @@ namespace Outliner.Controllers
         }
 
         // GET: Characters/Create
-        public IActionResult Create()
+/*        public IActionResult Create()
         {
+            
+            return View();
+        } */
+
+        // GET: Characters/Create
+        public IActionResult Create(Outline outline)
+        {
+            ViewBag.outlineID = outline.ID;
             return View();
         }
 
@@ -54,13 +70,14 @@ namespace Outliner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,name,OutlineID")] Character character)
+        public async Task<IActionResult> Create([Bind("name,IsProtagonist,OutlineID")] Character character)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(character);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction("Details", "Characters", character.ID);
+                return Redirect("/Characters/Details/" + character.ID);
             }
             return View(character);
         }
@@ -86,7 +103,7 @@ namespace Outliner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,name,OutlineID")] Character character)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,name,IsProtagonist,OutlineID")] Character character)
         {
             if (id != character.ID)
             {

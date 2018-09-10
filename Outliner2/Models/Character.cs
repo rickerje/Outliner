@@ -9,7 +9,7 @@ namespace Outliner.Models
     {
         public int ID { get; set; }
         public string name { get; set; }
-        bool IsProtagonist { get; set; }
+        public bool IsProtagonist { get; set; }
         public int OutlineID { get; set; }
     }
 }

@@ -66,7 +66,8 @@ namespace Outliner.Controllers
                 outline.CurrentUserName = currentUserName;
                 _context.Add(outline);
                 await _context.SaveChangesAsync();
-                return Redirect("/Characters/Create");
+                
+                return RedirectToAction("Create", "Characters", outline);
             }
             return View(outline);
         }
