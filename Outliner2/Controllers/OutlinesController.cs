@@ -43,6 +43,14 @@ namespace Outliner.Controllers
             {
                 return NotFound();
             }
+            else
+            {
+                var characters = _context.Characters
+                    .Where(ch => ch.OutlineID == outline.ID)
+                    .ToList();
+                ViewBag.CharacterList = characters;
+                ViewBag.CharacterCount = characters.Count;
+            }
 
             return View(outline);
         }
@@ -93,7 +101,7 @@ namespace Outliner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OutlineName,ID")] Outline outline)
+        public async Task<IActionResult> Edit(int id, [Bind("OutlineName,ID,CurrentUserName")] Outline outline)
         {
             if (id != outline.ID)
             {

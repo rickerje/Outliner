@@ -19,11 +19,12 @@
                 <span asp-validation-for="OutlineName" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="ID" />
+            <input type="hidden" asp-for="CurrentUserName" />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>
-        <a asp-controller="Characters" asp-route="Create">Add a character to your outline</a><br />
+        <a asp-controller="Characters" asp-action="Create" asp-route-id="@Model.ID">Add a character to your outline</a><br />
         <a href="">Add a scene (coming soon)</a>
     </div>
 </div>

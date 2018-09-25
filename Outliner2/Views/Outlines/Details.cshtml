@@ -24,8 +24,31 @@
             @Html.DisplayFor(model => model.CurrentUserName)
         </dd>
     </dl>
+    <h5>Characters</h5>
+    @if (ViewBag.CharacterCount != 0) {
+        <dl class="dl-horizontal">
+            @foreach (var item in ViewBag.CharacterList) {
+                <dt>
+                    Name:
+                </dt>
+                <dd>
+                    @item.name
+                </dd>
+                <dt>
+                    Protagonist?
+                </dt>
+                <dd>
+                    @item.IsProtagonist
+                </dd>
+            }
+        </dl>
+    }
+    else {
+        <p>No characters yet.</p>
+    }
+    <a asp-controller="Characters" asp-action="Create" asp-route-id="@Model.ID">Add a character</a>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-controller="Outlines" asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
